@@ -31,10 +31,10 @@ fn console_input(is_int: bool) -> ResultValue{
     // fn parses input from the terminal.
     //      if you exspect a string set is_int false, if you want an int enter true.
 
-    // I got this code from:
+    // I got some of this code from:
     //      https://stackoverflow.com/questions/30355185/how-to-read-an-integer-input-from-the-user-in-rust-1-0
     //      however I put it into a function and modifyied it to work 
-    //      with strings or ints and just return the i if valid.
+    //      with strings or ints and just return the i if valid I also added the enum.
     
     // take user input as a string
     let mut input_text = String::new();
