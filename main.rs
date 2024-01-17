@@ -36,8 +36,7 @@ fn console_input_int() -> u32{
 
     // I got some of this code from:
     //      https://stackoverflow.com/questions/30355185/how-to-read-an-integer-input-from-the-user-in-rust-1-0
-    //      however I put it into a function and modifyied it to work 
-    //      with strings or ints and just return the i if valid I also added the enum.
+    //      however I put it into a function and modifyied it to pass the i value out to teh return value.
     
     // take user input as a string
     let mut input_text = String::new();
@@ -62,8 +61,7 @@ fn console_input_string() -> String{
 
     // I got some of this code from:
     //      https://stackoverflow.com/questions/30355185/how-to-read-an-integer-input-from-the-user-in-rust-1-0
-    //      however I put it into a function and modifyied it to work 
-    //      with strings or ints and just return the i if valid I also added the enum.
+    //      however I put it into a function and modifyied it to pass the i value out to teh return value.
     
     // take user input as a string
     let mut input_text = String::new();
