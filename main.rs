@@ -24,7 +24,8 @@ fn main() {
     let action;
 
     if args.len() == 1 {
-        // use normal console in / out
+        // use normal console in / out 
+        // TODO move this all to a function the returns action
         
         println!("Would you like to encrypt(1) or decrypt(2) a file: ");
         action = console_input_int(); // true will return int
@@ -67,7 +68,7 @@ fn string_to_int(string_in: String) -> u32{
 
     // I got some of this code from:
     //      https://stackoverflow.com/questions/30355185/how-to-read-an-integer-input-from-the-user-in-rust-1-0
-    //      I seperated this part into it's own function for more flexability.
+    //      I separated this part into it's own function for more flexibility.
 
     let mut user_choice: u32 = 0;
     let trimmed = string_in.trim();
