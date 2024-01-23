@@ -28,7 +28,8 @@ fn main() {
         // TODO move this all to a function the returns action
         
         println!("Would you like to encrypt(1) or decrypt(2) a file: ");
-        action = console_input_int(); // true will return int
+        let temp = console_input_string();
+        action = string_to_int(temp); // true will return int
         
         if action == 1 { //encrypt
             println!("Please enter the path to the file you would like to encrypt: ");
