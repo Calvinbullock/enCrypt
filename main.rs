@@ -62,24 +62,6 @@ fn main() {
 //     assert!(plaintext == &their_plaintext[..]);
 // }
 
-fn console_input_string() -> u32{
-    // fn parses intager input from the terminal.
-
-    // I got some of this code from:
-    //      https://stackoverflow.com/questions/30355185/how-to-read-an-integer-input-from-the-user-in-rust-1-0
-    //      however I put it into a function and modifyied it to pass the i value to the string_to_int function.
-    //      I had thought that I might need the string to int function later.
-    
-    // take user input as a string
-    let mut input_text = String::new();
-    io::stdin()
-        .read_line(&mut input_text)
-        .expect("failed to read from stdin");
-    
-    return string_to_int(input_text);
-
-}
-
 fn string_to_int(string_in: String) -> u32{ 
     // fn parses string input to int.
 
