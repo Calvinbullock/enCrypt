@@ -12,16 +12,9 @@ fn main() {
     - save and close all files.
     */
 
-    // std in args
-    //      TODO handel empty arg
-    //      TODO use args
-
-    let file_path_arg; 
-    let file_action; 
+    let file_path; 
+    let action; 
     let args: Vec<String> = env::args().collect();
-
-    let file_path;
-    let action;
 
     if args.len() == 1 {
         // use normal console in / out 
@@ -45,12 +38,14 @@ fn main() {
 
     } else { 
         // use std in args
-        file_path_arg = &args[1];
-        file_action = &args[2]; // encrypt(1) / decrypt(2)
-        println!("{}, {}", file_path_arg, file_action);
+        // change args[] to owned instead of immutable reference
+        //      may be unnecessary..
+        file_path = args[1].to_owned();
+        action = args[2].parse::<u32>().expect("error"); // encrypt(1) / decrypt(2)
+
+        println!("{}, {}", file_path, action);
 
     }
-
 
 }
 
