@@ -1,4 +1,5 @@
 use std::io;
+use std::env;
 
 fn main() {
     /*
@@ -10,6 +11,15 @@ fn main() {
     - if encrypting save the encryption key to a different file
     - save and close all files.
     */
+
+    // std in args
+    //      TODO handel empty arg
+    //      TODO use args
+    // let args: Vec<String> = env::args().collect();
+    // let file_path_arg = &args[1];
+    // let file_action = &args[2]; // encrypt(1) / decrypt(2)
+
+    // println!("{}, {}", file_path_arg, file_action);
 
     println!("Would you like to encrypt(1) or decrypt(2) a file: ");
     let action = console_input_int(); // true will return int
