@@ -15,31 +15,52 @@ fn main() {
     // std in args
     //      TODO handel empty arg
     //      TODO use args
-    // let args: Vec<String> = env::args().collect();
-    // let file_path_arg = &args[1];
-    // let file_action = &args[2]; // encrypt(1) / decrypt(2)
 
-    // println!("{}, {}", file_path_arg, file_action);
+    let file_path_arg; 
+    let file_action; 
+    let args: Vec<String> = env::args().collect();
 
-    println!("Would you like to encrypt(1) or decrypt(2) a file: ");
-    let action = console_input_int(); // true will return int
     let file_path;
-        
-    if action == 1 { //encrypt
-        println!("Please enter the path to the file you would like to encrypt: ");
-        file_path = console_input_string();
+    let action;
 
-    } else { // decrypt
-        println!("Please enter the path to the file you would like to decrypt: ");
-        file_path = console_input_string();
+    if args.len() == 1 {
+        // use normal console in / out
+        
+        println!("Would you like to encrypt(1) or decrypt(2) a file: ");
+        action = console_input_int(); // true will return int
+        
+        if action == 1 { //encrypt
+            println!("Please enter the path to the file you would like to encrypt: ");
+            file_path = console_input_string();
+            // salty_file_encryption(file_path);
+
+        } else { // decrypt
+            println!("Please enter the path to the file you would like to decrypt: ");
+            file_path = console_input_string();
+
+        }
+        println!("{file_path}");
+
+    } else { 
+        // use std in args
+        file_path_arg = &args[1];
+        file_action = &args[2]; // encrypt(1) / decrypt(2)
+        println!("{}, {}", file_path_arg, file_action);
 
     }
-}
 
-fn file_open(file_path=String){
-    
 
 }
+
+// fn salty_file_encryption(file_path=String) {
+//     use sodiumoxide::crypto::secretbox;
+//     let key = secretbox::gen_key();
+//     let nonce = secretbox::gen_nonce();
+//     let plaintext = b"some data";
+//     let ciphertext = secretbox::seal(plaintext, &nonce, &key);
+//     let their_plaintext = secretbox::open(&ciphertext, &nonce, &key).unwrap();
+//     assert!(plaintext == &their_plaintext[..]);
+// }
 
 fn console_input_int() -> u32{
     // fn parses intager input from the terminal.
