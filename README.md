@@ -1,18 +1,23 @@
 # Overview
-This program will encrypt file and for security and privacy. It will allow both command line interaction 
-as well as a more guided console exspeiance.
+This program will encrypt files for security and privacy. It will allow both command-line interaction 
+as well as a more guided console experience.
 
-flags:
+This program aims to help me learn the Rust programing language and learn more about
+using libraries. In this case, it is a cryptographic one.
 
-This purpues for this program is to help me learn the rust programing langwage as well as to learn more about
-using libraies. In this case it is a cryptographic one.
+install:
+
+git clone ....
+
+Run:
+...
 
 [Software Demo Video](http://youtube.link.goes.here)
 
 # Development Environment
 
-I am using the rustc pakadge from the ubuntu apt repositories.
-this includes rust version 1.71.1
+I am using the rustc package from the Ubuntu apt repositories.
+this includes Rust version 1.71.1
 
 My editer is vim/neovim and vs code.
 
