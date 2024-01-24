@@ -4,19 +4,19 @@ as well as a more guided console exspeiance.
 
 flags:
 
-This purpues for this program is to help me learn the rust programing langadge as well as to learn more about
-useing libraies. In this case it is a cryptographic one.
+This purpues for this program is to help me learn the rust programing langwage as well as to learn more about
+using libraies. In this case it is a cryptographic one.
 
 [Software Demo Video](http://youtube.link.goes.here)
 
 # Development Environment
 
-I am useing the rustc pakadge from the ubuntu apt repositories.
+I am using the rustc pakadge from the ubuntu apt repositories.
 this includes rust version 1.71.1
 
-My edditer is vim/neovim and vs code.
+My editer is vim/neovim and vs code.
 
-library used --- ???
+library used sodiumoxide
 
 # Useful Websites
 
