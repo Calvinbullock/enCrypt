@@ -1,5 +1,7 @@
 use std::io;
 use std::env;
+extern crate sodiumoxide;
+// use sodiumoxide;
 
 fn main() {
     /* TODO
@@ -49,15 +51,15 @@ fn main() {
 
 }
 
-// fn salty_file_encryption(file_path=String) {
-//     use sodiumoxide::crypto::secretbox;
-//     let key = secretbox::gen_key();
-//     let nonce = secretbox::gen_nonce();
-//     let plaintext = b"some data";
-//     let ciphertext = secretbox::seal(plaintext, &nonce, &key);
-//     let their_plaintext = secretbox::open(&ciphertext, &nonce, &key).unwrap();
-//     assert!(plaintext == &their_plaintext[..]);
-// }
+fn salty_file_encryption(file_path=String) {
+    use sodiumoxide::crypto::secretbox;
+    let key = secretbox::gen_key();
+    let nonce = secretbox::gen_nonce();
+    let plaintext = b"some data";
+    let ciphertext = secretbox::seal(plaintext, &nonce, &key);
+    let their_plaintext = secretbox::open(&ciphertext, &nonce, &key).unwrap();
+    assert!(plaintext == &their_plaintext[..]);
+}
 
 fn string_to_int(string_in: String) -> u32{ 
     // fn parses string input to int.
