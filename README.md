@@ -10,6 +10,9 @@ install:
 git clone ....
 
 Run:
+    cd into enCrypt directory
+
+    cargo run
 ...
 
 [Software Demo Video](http://youtube.link.goes.here)
