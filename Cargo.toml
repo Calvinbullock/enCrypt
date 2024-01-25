@@ -1,5 +1,5 @@
 [package]
-name = "enCrypt"
+name = "en_crypt"
 version = "0.1.0"
 authors = ["calvin <your_email@example.com>"]
 edition = "2021"

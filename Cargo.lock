@@ -21,7 +21,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "enCrypt"
+name = "en_crypt"
 version = "0.1.0"
 dependencies = [
  "sodiumoxide",
