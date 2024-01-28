@@ -16,9 +16,8 @@ Useing / running:
     cd into enCrypt directory
 
     cargo run
-...
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://www.youtube.com/watch?v=rsYSzaz9zSQ&list=PLoyljU3FIZC0Tj9_WPmjfL5vGZI_t2S0s&index=3)
 
 # Development Environment
 
@@ -27,7 +26,7 @@ this includes Rust version 1.71.1
 
 My editer is vim/neovim and vs code.
 
-library used sodiumoxide
+library used sodiumoxide, made to be an easy to use rust cryptography library.
 
 # Useful Websites
 
