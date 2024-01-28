@@ -1,9 +1,11 @@
 use std::io;
 use std::env;
 extern crate sodiumoxide;
-// use sodiumoxide;
+use std::fs::File;
+use std::io::{Read, Write};
+use sodiumoxide::crypto::secretbox;
+// use sodiumoxide::crypto::pwhash;
 
-fn main() {
     /* TODO
     - ask if user is decrypting or encrypting a file
     - ask for a file path
@@ -14,6 +16,9 @@ fn main() {
     - save and close all files.
     */
 
+const OUTPUT_PATH: &str = "";
+
+fn main() {
     let file_path; 
     let action; 
     let args: Vec<String> = env::args().collect();
@@ -29,37 +34,101 @@ fn main() {
         if action == 1 { //encrypt
             println!("Please enter the path to the file you would like to encrypt: ");
             file_path = console_input_string();
-            // salty_file_encryption(file_path);
+            read_from_file();
+            encrypt_file(file_path, OUTPUT_PATH);
 
         } else { // decrypt
             println!("Please enter the path to the file you would like to decrypt: ");
             file_path = console_input_string();
-
+            // decrypt_file();
         }
-        println!("{file_path}");
 
     } else { 
         // use std in args
         // change args[] to owned instead of immutable reference
-        //      may be unnecessary..
+        //      may be unnecessary.
         file_path = args[1].to_owned();
         action = args[2].parse::<u32>().expect("error"); // encrypt(1) / decrypt(2)
+        
+        if action == 1 { // encrypt
+            encrypt_file(file_path, OUTPUT_PATH);
 
-        println!("{}, {}", file_path, action);
+        } else{ // decrypt
+            
+        }
+        // println!("{}, {}", file_path, action);
 
     }
 
 }
 
-fn salty_file_encryption(file_path=String) {
-    use sodiumoxide::crypto::secretbox;
+fn read_from_file() -> io::Result<()>{
+    let mut file = File::open("testing.txt")?;
+    let mut contents = String::new();
+    file.read_to_string(&mut contents)?;
+    println!("{}", contents);
+    //assert_eq!(contents, "");
+    Ok(())
+}
+
+fn encrypt_file(file_src_path: String, output_file_path: &str) {
+    println!("l66 here");
     let key = secretbox::gen_key();
     let nonce = secretbox::gen_nonce();
-    let plaintext = b"some data";
-    let ciphertext = secretbox::seal(plaintext, &nonce, &key);
-    let their_plaintext = secretbox::open(&ciphertext, &nonce, &key).unwrap();
-    assert!(plaintext == &their_plaintext[..]);
+    println!(" l 69 {}", file_src_path);
+    let mut file = File::open(file_src_path).unwrap();
+    let mut contents = Vec::new();
+
+    // encrypt file
+    file.read_to_end(&mut contents).unwrap();
+    let ciphertext = secretbox::seal(&contents, &nonce, &key);
+    
+    // Write to file
+    let encrypted_file = File::create(output_file_path);
+    
+    match encrypted_file {
+        Ok(mut encrypted_file) => {
+            encrypted_file.write_all(&nonce.as_ref()).unwrap();
+            encrypted_file.write_all(&ciphertext).unwrap();
+            println!("Sucsses!");
+        }
+
+        Err(error) => {
+            println!("error {}", error);
+        }
+    }
+
+    // Salt password
+    // let password = pwhash::pwhash_simple("your_password", pwhash::OPSLIMIT_INTERACTIVE, pwhash::MEMLIMIT_INTERACTIVE).unwrap();
+    // let salted_password = pwhash::gen_salt();
+    // let encrypted_key = pwhash::encrypt(&password, &salted_password).unwr
+
 }
+
+/* still in progress until encrypt works right
+fn decrypt_file() {
+    let mut encrypted_file = File::open(ciphertext_path).map_err(|e| format!("Error opening file: {}", e))?;
+    let mut ciphertext = Vec::new();
+    encrypted_file.read_to_end(&mut ciphertext).map_err(|e| format!("Error reading file: {}", e))?;
+
+    // Extract the nonce (first bytes) and ciphertext (remaining bytes)
+    let nonce_slice = &ciphertext[..secretbox::NONCEBYTES];
+    let ciphertext_slice = &ciphertext[secretbox::NONCEBYTES..];
+
+    if nonce_slice
+        .len() != secretbox::NONCEBYTES || ciphertext_slice.len() == 0 {
+        return Err(String::from:IZZnvalid file format"));
+    }
+
+    match secretbox::open(ciphertext_slice, nonce_slice, key) {
+        Ok(decrypted_content) => {
+            let mut output_file = File::create(output_path).map_err(|e| format!("Error creating output file: {}", e))?;
+            output_file.write_all(&decrypted_content).map_err(|e| format!("Error writing decrypted content: {}", e))?;
+        }
+        Err(e) => Err(format!("Decryption error: {}", e)),
+    }
+}
+*/
 
 fn string_to_int(string_in: String) -> u32{ 
     // fn parses string input to int.
