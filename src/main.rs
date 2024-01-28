@@ -34,8 +34,8 @@ fn main() {
         if action == 1 { //encrypt
             println!("Please enter the path to the file you would like to encrypt: ");
             file_path = console_input_string();
-            read_from_file();
-            encrypt_file(file_path, OUTPUT_PATH);
+            // read_from_file(&file_path);
+            encrypt_file(&file_path, OUTPUT_PATH);
 
         } else { // decrypt
             println!("Please enter the path to the file you would like to decrypt: ");
@@ -51,7 +51,7 @@ fn main() {
         action = args[2].parse::<u32>().expect("error"); // encrypt(1) / decrypt(2)
         
         if action == 1 { // encrypt
-            encrypt_file(file_path, OUTPUT_PATH);
+            encrypt_file(&file_path, OUTPUT_PATH);
 
         } else{ // decrypt
             
@@ -62,29 +62,30 @@ fn main() {
 
 }
 
-fn read_from_file() -> io::Result<()>{
+fn read_from_file(file_path: &str) -> io::Result<()>{
+    // sorced from https://doc.rust-lang.org/std/fs/struct.File.html
+    //let mut file = File::open(file_path)?; // TODO again hard coded file path temp
     let mut file = File::open("testing.txt")?;
     let mut contents = String::new();
     file.read_to_string(&mut contents)?;
     println!("{}", contents);
-    //assert_eq!(contents, "");
     Ok(())
 }
 
-fn encrypt_file(file_src_path: String, output_file_path: &str) {
-    println!("l66 here");
+fn encrypt_file(file_path: &str, output_file_path: &str) {
     let key = secretbox::gen_key();
     let nonce = secretbox::gen_nonce();
-    println!(" l 69 {}", file_src_path);
-    let mut file = File::open(file_src_path).unwrap();
+
+    let contents = read_from_file(file_path); // TODO can not pass in a file path....
     let mut contents = Vec::new();
 
     // encrypt file
-    file.read_to_end(&mut contents).unwrap();
+    // file.read_to_end(&mut contents).unwrap();
     let ciphertext = secretbox::seal(&contents, &nonce, &key);
     
     // Write to file
-    let encrypted_file = File::create(output_file_path);
+    // let encrypted_file = File::create(output_file_path); //TODO can not pass in file pat...
+    let encrypted_file = File::create("sealed.txt"); // TODO path works if handed as string???
     
     match encrypted_file {
         Ok(mut encrypted_file) => {
@@ -105,7 +106,7 @@ fn encrypt_file(file_src_path: String, output_file_path: &str) {
 
 }
 
-/* still in progress until encrypt works right
+/* TODO wating to finish implementation until encrypt works
 fn decrypt_file() {
     let mut encrypted_file = File::open(ciphertext_path).map_err(|e| format!("Error opening file: {}", e))?;
     let mut ciphertext = Vec::new();
