@@ -5,9 +5,6 @@ as well as a more guided console experience.
 This program aims to help me learn the Rust programing language and learn more about
 using libraries. In this case, it is a cryptographic one.
 
-**WARNING**
-Decryption password is not salted, or encrypted.
-
 install:
     navagate to your choosen directory.
     git clone https://github.com/Calvinbullock/enCrypt
