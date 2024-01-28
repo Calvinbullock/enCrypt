@@ -5,9 +5,6 @@ as well as a more guided console experience.
 This program aims to help me learn the Rust programing language and learn more about
 using libraries. In this case, it is a cryptographic one.
 
-**WARNING**
-Decryption password is not salted, or encrypted.
-
 install:
     navagate to your choosen directory.
     git clone https://github.com/Calvinbullock/enCrypt
@@ -16,9 +13,8 @@ Useing / running:
     cd into enCrypt directory
 
     cargo run
-...
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://www.youtube.com/watch?v=rsYSzaz9zSQ&list=PLoyljU3FIZC0Tj9_WPmjfL5vGZI_t2S0s&index=3)
 
 # Development Environment
 
@@ -27,7 +23,7 @@ this includes Rust version 1.71.1
 
 My editer is vim/neovim and vs code.
 
-library used sodiumoxide
+library used sodiumoxide, made to be an easy to use rust cryptography library.
 
 # Useful Websites
 
@@ -44,3 +40,5 @@ library used sodiumoxide
 
 - get file paths to work
 - get std in to function corectly
+- handel incorect input
+- implement std in help arg
