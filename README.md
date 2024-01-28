@@ -40,3 +40,5 @@ library used sodiumoxide, made to be an easy to use rust cryptography library.
 
 - get file paths to work
 - get std in to function corectly
+- handel incorect input
+- implement std in help arg
