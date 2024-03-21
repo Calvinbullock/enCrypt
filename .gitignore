@@ -1,2 +1,9 @@
 main
 /target/*
+
+sealed.txt
+sodiumoxide/
+src/sealed.txt
+src/testing.txt
+testing.txt
+
