@@ -4,10 +4,9 @@ extern crate sodiumoxide;
 use std::fs::File;
 use std::io::{Read, Write};
 use sodiumoxide::crypto::secretbox;
-// use sodiumoxide::crypto::pwhash;
 
     /* TODO
-    - ask if user is decrypting or encrypting a file
+    -DONE ask if user is decrypting or encrypting a file
     - ask for a file path
     - open a file
     - pass the file and key to an encryption library
@@ -34,7 +33,6 @@ fn main() {
         if action == 1 { //encrypt
             println!("Please enter the path to the file you would like to encrypt: ");
             file_path = console_input_string();
-            // read_from_file(&file_path);
             encrypt_file(&file_path, OUTPUT_PATH);
 
         } else { // decrypt
@@ -54,9 +52,9 @@ fn main() {
             encrypt_file(&file_path, OUTPUT_PATH);
 
         } else{ // decrypt
+            // decrypt_file();
             
         }
-        // println!("{}, {}", file_path, action);
 
     }
 
